@@ -13,6 +13,23 @@ class Quiz:
         self.answer = answer
         self.options = options
 
+    def to_dict(self):
+        return {
+            "question": self.question,
+            "score": self.score,
+            "answer": self.answer,
+            "options": self.options
+        }
+
+    @staticmethod
+    def from_dict(data):
+        return Quiz(
+            data["question"],
+            data["score"],
+            data["answer"],
+            data["options"]
+        )
+
     def show_question(self):
         print(f"[문제] {self.question}")
         
