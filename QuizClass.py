@@ -7,18 +7,18 @@
 import random
 
 class Quiz:
-    def __init__(self, question, score, answer, options):
+    def __init__(self, question, score, answer, choices):
         self.question = question
         self.score = score
         self.answer = answer
-        self.options = options
+        self.choices = choices
 
     def to_dict(self):
         return {
             "question": self.question,
             "score": self.score,
             "answer": self.answer,
-            "options": self.options
+            "choices": self.choices
         }
 
     @staticmethod
@@ -27,22 +27,22 @@ class Quiz:
             data["question"],
             data["score"],
             data["answer"],
-            data["options"]
+            data["choices"]
         )
 
     def show_question(self):
         print(f"[문제] {self.question}")
         
-        paired = [(opt, i == self.answer - 1) for i , opt in enumerate(self.options)]
+        paired = [(choice, i == self.answer - 1) for i , choice in enumerate(self.choices)]
         
         random.shuffle(paired)
 
-        self.shuffled_options = []
+        self.shuffled_choices = []
         self.correct_index = None
 
-        for i, (option, is_correct) in enumerate(paired, 1):
-            print(f"{i}. {option}")
-            self.shuffled_options.append(option)
+        for i, (choice, is_correct) in enumerate(paired, 1):
+            print(f"{i}. {choice}")
+            self.shuffled_choices.append(choice)
 
             if is_correct:
                 self.correct_index = i
