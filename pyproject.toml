@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "quiz_game"
+version = "0.1.0"
+description = "Quiz Game Python Application"
+requires-python = ">=3.10"
+authors = [
+    {name = "giyeop kim(codyssey)"}
+]
+dependencies = [] #
+
+[tool.setuptools]
+packages = {find = {}}

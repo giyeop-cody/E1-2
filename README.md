@@ -77,8 +77,7 @@ project_root/
 │   └── quiz_engine.py     # 퀴즈 흐름 제어 및 핵심 로직 (QuizGame Class)
 ├── utils/                 # 공통 유틸리티
 │   └── json_manager.py    # JSON 파일 I/O 및 스키마 검증 (JSONManager Class)
-├── data/                  # 비휘발성 데이터 저장소 (Persistent Storage)
-│   ├── state.json       # 퀴즈 목록, 점수 기록
+├── state.json             # 비휘발성 데이터 저장소(Persistent Storage) 퀴즈 목록, 점수
 ├── tests/                 # 단위 테스트 (Unit Tests)
 │   ├── test_engine.py     # 엔진 로직 테스트
 │   └── test_utils.py      # 파일 입출력 및 검증 테스트
