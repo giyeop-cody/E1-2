@@ -35,7 +35,7 @@ class InputManager:
             elif low_input in ('false', '0', 'n', 'no', 'f'):
                 value = False
             else:
-                raise ValueError("y/n 또는 True/False 형식으로 입력해주세요.")
+                raise InvalidType("y/n 또는 True/False 형식으로 입력해주세요.")
         else:
             try:
                 value = expected_type(raw_input)

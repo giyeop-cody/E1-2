@@ -1,11 +1,15 @@
 import sys
-from utils.input_manager import InputManager
+import signal
+from utils.input_manager import InputManager, OutofRange, InvalidType, EmptyInput
 
 def cleanup():
     """프로그램 종료 전 자원을 정리하거나 메시지를 출력하는 함수"""
     print("\n[시스템] 프로그램을 안전하게 종료합니다. 이용해 주셔서 감사합니다.")
     # 필요한 경우 파일 닫기나 DB 연결 해제 로직을 여기에 추가합니다.
     sys.exit(0)
+
+# SIGTSTP 신호가 들어오면 handler 함수를 실행
+signal.signal(signal.SIGTSTP, lambda signum, frame: cleanup())
 
 def main_menu():
     """메뉴 인터페이스를 무한 루프로 실행"""
@@ -20,7 +24,6 @@ def main_menu():
                 prompt="번호 입력", 
                 expected_type=int, 
                 dataset=range(1, 4),  # 1, 2, 3만 허용 (레인지 기능 활용)
-                error_msg="1~3번 사이의 번호를 입력해주세요."
             )
 
             if choice == 1:  # 숫자로 비교
@@ -38,6 +41,10 @@ def main_menu():
             # Ctrl+D (Unix) 또는 Ctrl+Z (Windows) 입력 시 발생
             print("\n\n[중단] 입력 스트림이 종료됨 (EOF)")
             cleanup()
+            
+        except (OutofRange, InvalidType, EmptyInput) as e:
+            # 예상된 입력 에러 처리
+            print(f"{e}")
             
         except Exception as e:
             # 기타 예기치 못한 에러 처리

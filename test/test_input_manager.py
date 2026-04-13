@@ -2,8 +2,7 @@ import unittest
 from unittest.mock import patch
 from enum import Enum
 
-# 테스트 대상 클래스와 예외들을 가져옵니다.
-# (위에서 작성한 코드가 input_manager.py에 있다고 가정하거나 같은 파일에 두어야 합니다.)
+from utils.input_manager import InputManager, OutofRange, InvalidType, EmptyInput
 
 class Color(Enum):
     RED = 1
